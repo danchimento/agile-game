@@ -5,6 +5,7 @@ import StoreWindow from './game/StoreWindow';
 import ProjectTracker from './game/ProjectTracker';
 import $ from 'jquery';
 import Wallet from './game/Wallet';
+import MusicPlayer from './game/spotify';
 
 var em = null;
 var pt = null;
@@ -17,8 +18,33 @@ var project = null;
 
 var codeWindow;
 var storeWindow;
+var musicPlayer;
 
 $apps = $("#apps");
+
+musicPlayer = new MusicPlayer();
+
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('code')) {
+    
+    $.ajax({
+        url: 'https://accounts.spotify.com/api/token',
+        type: 'post',
+        data: {
+            grant_type: 'authorization_code',
+            code: urlParams.get('code'),
+            redirect_uri: 'http://localhost:8080'
+        },
+        headers: {
+            Authorization: 'Basic [BASE64 ENCODE CLIENT_ID:CLIENT_SECRET]', 
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data)
+            musicPlayer.init(data.access_token);
+        }
+    });
+}
 
 // Loading timer
 setTimeout(() => {
@@ -40,7 +66,8 @@ setTimeout(() => {
     storeWindow = new StoreWindow(onPurchaseItem);
 
     switchToWindow(codeWindow);
-}, 300);
+
+}, 2000);
 
 $apps.on("click", "div", function() {
     switch($(this).attr('data-window')) {
@@ -52,6 +79,18 @@ $apps.on("click", "div", function() {
             break;
     }
 });
+
+$("#auth-button").on("click", () => {
+    var clientId = 'a8fe84d931b74adba5b9c405ef579c06';
+    var redirectUri = 'http://localhost:8080'
+    var scopes = encodeURIComponent('user-read-email user-read-private user-read-currently-playing streaming user-read-playback-state user-modify-playback-state')
+    location.href = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scopes}&redirect_uri=${redirectUri}`;
+})
+
+
+$("#play-button").on("click", () => {
+    musicPlayer.play();  
+})
 
 function switchToWindow(window) {
     if (activeWindow) activeWindow.close();

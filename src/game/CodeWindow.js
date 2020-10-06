@@ -20,6 +20,8 @@ export default class CodeWindow {
 
         this._$window = $("#code-window");
         this._$flyingCodeAnchor = $("#flying-code-anchor");
+
+
     }
 
     get name() { return "Code" }
