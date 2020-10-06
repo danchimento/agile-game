@@ -3,9 +3,164 @@
    src: url(../assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf)
 }
 
-html {
+$ui-color: #333;
+$background-color: #ccc;
+
+html, body {
    padding: 0;
    margin: 0;
-   background-color: #ddd;
+   background-color: $background-color;
    font-family: 'PressStart2P';
+   font-size: 10px;
+   height: 100%;
+   width: 100%;
+}
+
+html {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+body {
+   position: relative;
+   max-width: 800px;
+}
+
+#game {
+   overflow: hidden;
+   background-color: $ui-color;
+   display: flex;
+   flex-direction: column;
+   max-width: 800px;
+   min-height: 500px;
+}
+
+#project-tracker {
+   border: 3px $ui-color solid;
+   background: $background-color;
+   padding: 10px;
+   text-align: center;
+
+   & > div:first-child {
+      margin-bottom: 10px;
+   }
+
+   #task-progress-bar {
+      width: 90%;
+      margin: 10px auto 0 auto;
+      height: 20px;
+      background: #999;
+      position: relative;
+
+      #task-progress-completion {
+         height: 100%;
+         width: 0%;
+         background: #666;
+      }
+
+      #task-progress-value {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         left: 0;
+      }
+   }
+}
+
+.window {
+   flex-grow: 1;
+   color: white;
+   padding: 15px;
+}
+
+.flying-code {
+   color: white;
+}
+
+#status-bar {
+   display: flex;
+   align-items: center;
+   background-color: $background-color;
+
+   #apps {
+      & > div {
+         display: inline-block;
+         padding: 10px; 
+
+         &:hover:not(.active) {
+            cursor: pointer;
+         }
+         
+         &.active {
+            background-color: $ui-color;
+            color: white;
+         }
+      }
+   }
+}
+
+#wallet {
+   position: absolute;
+   right: 15px;
+}
+
+#code-window {
+   position: relative;
+   color: white;
+   background: #333;
+   
+   #flying-code-anchor {
+      left: 50%;
+      top: 50%;
+      width: 1px;
+      height: 1px;
+      background: red;
+      position: absolute;
+   }
+}
+
+#store-window {
+   display: none;
+
+   .category {
+
+      .title {
+         margin-bottom: 10px;
+      }
+
+      .item {
+         margin: 5px 0;
+         padding: 10px;
+         border: thin solid white;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+
+         .buy-button {
+            background: $background-color;
+            color: $ui-color;
+            padding: 10px;
+
+            &:hover {
+               cursor: pointer;
+               background: darken($background-color, 10%);
+            }
+         }
+
+         &.purchased {
+            opacity: .3;
+
+            .buy-button {
+               &:hover {
+                  background: $background-color;
+                  cursor: not-allowed;
+               }
+            }
+         }
+      }
+   }
 }

@@ -8,7 +8,39 @@
 </head>
 
 <body>
-   <div id="game"></div>
+   <div id="game">
+      <div id="project-tracker">
+         <div>
+            <span>Project #<span id='project-number'></span>:</span> <span id="project-name"></span>
+         </div>
+         <div>
+            <div>
+               <span>Task <span id="current-task-num"></span>/<span id="total-task-num"></span>:</span> <span id="task-name"></span>
+            </div>
+            <div id="task-progress-bar">
+               <div id="task-progress-value"></div>
+               <div id="task-progress-completion"></div>
+            </div>
+         </div>
+      </div>
+
+      <div id="code-window" class="window">
+         <div id="flying-code-anchor"></div>
+      </div>
+      <div id="store-window" class="window">
+      </div>
+
+      <div id="status-bar">
+         <div id="apps">
+            <div data-window="Code">
+               Code
+            </div>
+            <div data-window="Store">
+               Store (<span id="revenue"></span>)
+            </div>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>

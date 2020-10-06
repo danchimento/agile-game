@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Keyboards",
+        "items": [
+            {
+                "name": "K18 Mechanical",
+                "price": 200,
+                "outputIncrease": 1 
+            }
+        ]
+    }
+]

@@ -1,38 +1,40 @@
 import $ from 'jquery';
-import Element from './Element';
+import { px } from '../Util';
 
 export default class ElementManager {
     
     $container;
 
     constructor(containerSelector) {
-        $container = $(containerSelector);
-        this.$container.css({
-            position: "absolute"
-        });
+        this.$container = $(containerSelector);
     }
 
-    addElement(x, y) {
-        var element = new Element(x, y);
-        element._$ = $("<div>")
-            .text(text)
+    addElement() {
+        var $elem = $("<div>")
+            .css({ position: "fixed"})
             .appendTo(this.$container);
+
+        return $elem;
     }
 
-    addText(text, x, y) {
-        var elem = this.addElement(x, y);
-        elem._$.text(text);
-        elem.moveTo(x, y);
-
-        return elem;
+    addText(text) {
+        return this.addElement()
+            .text(text);
     }
 
-    moveTo(x, y, animate) {
-        this._$.css({
-            left: x,
-            top: y
+    addContainer(width, height) {
+        
+    }
+
+    move($elem, x, y, animate) {
+        $elem.css({
+            left: px(x),
+            top: px(y)
         });
 
-        return this;
+        return $elem;
     }
+
+    get containerWidth () { return this.$container.width() }
+    get containerHeight () { return this.$container.height() }
 }
