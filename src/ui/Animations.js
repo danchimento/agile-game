@@ -1,14 +1,23 @@
 import $ from 'jquery';
 import Velocity from 'velocity-animate';
 import { rand } from '../Util';
+import ElementManager from './ElementManager';
 
 export default class Animations {
-    static pop($elem, size) {
+    static pop(text, $anchor, color, size) {
+
+        var $text = ElementManager.addText(text)
+            .css("color", color);
+
+        
+        ElementManager.move($text, 
+            $anchor.offset().left + $anchor.width() / 2 - $text.width() / 2, 
+            $anchor.offset().top + $anchor.height() / 2 - $text.height() / 2);
 
         var minVert = 75;
         var maxVert = 125;
-        var minHor = -100;
-        var maxHor = 100;
+        var minHor = -50;
+        var maxHor = 50;
 
         switch(size) {
             case "SMALL":
@@ -21,13 +30,13 @@ export default class Animations {
                 break;
         }
 
-        var topTo = $elem.position().top - rand(minVert, maxVert);
-        var leftTo = $elem.position().left - rand(minHor, maxHor);
+        var topTo = $text.position().top - rand(minVert, maxVert);
+        var leftTo = $text.position().left - rand(minHor, maxHor);
 
-        var removeElem = () => { $elem.remove() };
+        var removeElem = () => { $text.remove() };
 
-        Velocity($elem, { top: topTo }, { duration: 1000, easing: "easeOutSine" });
-        Velocity($elem, { left: leftTo }, { duration: 1000, queue: false, easing: "easeInSine" });
-        Velocity($elem, { opacity: 0 }, { duration: 1000, queue: false, easing: "easeInQuart", complete: removeElem });
+        Velocity($text, { top: topTo }, { duration: 1000, easing: "easeOutSine" });
+        Velocity($text, { left: leftTo }, { duration: 1000, queue: false, easing: "easeInSine" });
+        Velocity($text, { opacity: 0 }, { duration: 1000, queue: false, easing: "easeInQuart", complete: removeElem });
     }
 }

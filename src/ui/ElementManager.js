@@ -3,30 +3,20 @@ import { px } from '../Util';
 
 export default class ElementManager {
     
-    $container;
-
-    constructor(containerSelector) {
-        this.$container = $(containerSelector);
-    }
-
-    addElement() {
+    static addElement() {
         var $elem = $("<div>")
             .css({ position: "fixed"})
-            .appendTo(this.$container);
+            .appendTo($("body"));
 
         return $elem;
     }
 
-    addText(text) {
-        return this.addElement()
+    static addText(text) {
+        return ElementManager.addElement()
             .text(text);
     }
 
-    addContainer(width, height) {
-        
-    }
-
-    move($elem, x, y, animate) {
+    static move($elem, x, y) {
         $elem.css({
             left: px(x),
             top: px(y)
@@ -34,7 +24,4 @@ export default class ElementManager {
 
         return $elem;
     }
-
-    get containerWidth () { return this.$container.width() }
-    get containerHeight () { return this.$container.height() }
 }

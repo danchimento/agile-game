@@ -18,23 +18,13 @@ export default class Wallet {
 
     increaseRevenue(amount) {
         this.revenue += amount;
-
-        var $text = this._em.addText(`+${amount}`)
-            .css({ color: "darkgreen" });
-        this._em.move($text, this._$revenue.offset().left, this._$revenue.offset().top);
-        Animations.pop($text, "SMALL");
-
+        Animations.pop(`-${amount}`, this._$revenue, "darkgreen",  "SMALL");
         this._displayRevenue();
     }
 
     decreaseRevenue(amount) {
         this.revenue -= amount;
-
-        var $text = this._em.addText(`-${amount}`)
-            .css({ color: "red" });
-        this._em.move($text, this._$revenue.offset().left, this._$revenue.offset().top);
-        Animations.pop($text, "SMALL");
-
+        Animations.pop(`-${amount}`, this._$revenue, "red",  "SMALL");
         this._displayRevenue();
     }
 

@@ -25,26 +25,47 @@
       </div>
 
       <div id="code-window" class="window">
-         <button id='auth-button'>Auth</button>
-         <button id='play-button'>Play</button>
-         <div id="flying-code-anchor"></div>
+         <!-- <button id='auth-button'>Auth</button>
+         <button id='play-button'>Play</button> -->
+         <!-- <div id="flying-code-anchor"></div> -->
+
       </div>
       <div id="store-window" class="window">
+      </div>
+
+      <div id="team-window" class="window">
+         <div id="members">
+            <div class="team-member selected">
+               <div class="name">Xinyu Z.</div>
+               <div class="output">+2 / sec.</div>
+            </div>
+            <div class="team-member">
+               <div class="name">Xinyu Z.</div>
+               <div class="output">+2 / sec.</div>
+            </div>
+         </div>
+         <div id="chat-window">
+            <div class="message from">How's it going?</div>
+            <div class="message to">Pretty good thanks. I could use some help with this problem I'm facing. Do you have a few minutes to look at it with me?</div>
+         </div>
       </div>
 
       <div id="status-bar">
          <div id="apps">
             <div data-window="Code">
-               Code
+               Code (<span id="output"></span>)
             </div>
             <div data-window="Store">
                Store (<span id="revenue"></span>)
+            </div>
+            <div data-window="Team">
+               Team (<span id="team-output"></span>/sec)
             </div>
          </div>
       </div>
    </div>
 
-   <script src="https://sdk.scdn.co/spotify-player.js"></script>
+   <!-- <script src="https://sdk.scdn.co/spotify-player.js"></script> -->
 
 </body>
 

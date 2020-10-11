@@ -5,12 +5,14 @@
 
 $ui-color: #333;
 $background-color: #ccc;
+$secondary-color: #777;
 
 html, body {
    padding: 0;
    margin: 0;
    background-color: $background-color;
    font-family: 'PressStart2P';
+   line-height: 1.5em;
    font-size: 10px;
    height: 100%;
    width: 100%;
@@ -75,6 +77,8 @@ body {
    flex-grow: 1;
    color: white;
    padding: 15px;
+   height: 320px;
+   overflow-y: scroll;
 }
 
 .flying-code {
@@ -110,9 +114,10 @@ body {
 
 #code-window {
    position: relative;
-   color: white;
+   color: green;
    background: #333;
-   
+   white-space: pre;
+
    #flying-code-anchor {
       left: 50%;
       top: 50%;
@@ -160,6 +165,59 @@ body {
                   cursor: not-allowed;
                }
             }
+         }
+      }
+   }
+}
+
+#team-window {
+   display: none;
+
+   #members {
+      widtH: 30%;
+      border-right: thin black solid;
+
+      .team-member {
+         background-color: $secondary-color;
+         border-bottom: thin black solid;
+         padding: 10px;
+         color: black;
+
+         .output {
+            font-size: smaller;
+            color: #444;
+         }
+
+         &.selected {
+            background: $background-color;
+            color: black;
+            margin-right: -1px;
+         }
+
+         &:not(.selected) {
+            cursor: pointer;
+         }
+      }
+   }
+
+   #chat-window {
+      width: 70%;
+      padding: 10px;
+      background: $background-color;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+
+      .message {
+         background: $secondary-color;
+         padding: 10px;
+         width: 70%;
+         margin-bottom: 10px;
+
+         &.from {
+            align-self: flex-end;
+            background-color: lighten($secondary-color, 10%);
          }
       }
    }

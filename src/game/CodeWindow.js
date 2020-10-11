@@ -1,27 +1,27 @@
 import Animations from '../ui/Animations';
 import $ from 'jquery';
-import code from './code.json';
+import code from './data/code.txt';
 import { rand } from '../Util';
 
 export default class CodeWindow {
 
-    _em;
     _onCode;
 
     _$window;
-    _$flyingCodeAnchor;
+    _$output;
+    _codeLine;
 
     output;
 
-    constructor(elementManager, onCode) {
-        this._em = elementManager;
+    constructor(onCode) {
         this._onCode = onCode;
-        this.output = 1;
+        this.output = 0;
+        this._codeLine = 0;
 
         this._$window = $("#code-window");
-        this._$flyingCodeAnchor = $("#flying-code-anchor");
+        this._$output = $("#output");
 
-
+        this.increaseOutput(1);
     }
 
     get name() { return "Code" }
@@ -37,17 +37,25 @@ export default class CodeWindow {
     }
 
     type() {
-        var textIndex = rand(0, code.length - 1);
-        var $text = this._em.addText(`+${this.output} ${code[textIndex]}`)
-            .addClass("flying-code");
+        var length = 5;
+     //   Animations.pop(`+${this.output} ${code[textIndex]}`, this._$flyingCodeAnchor, "white");
 
-        this._em.move($text, this._$flyingCodeAnchor.offset().left - $text.width() / 2, this._$flyingCodeAnchor.offset().top);
-        Animations.pop($text);
+        let codeLine = code.substring(this._codeLine, this._codeLine + length).replace(/[\u00A0-\u9999<>\&]/gim, function(a) {
+            return "&#" + a.charCodeAt(0) + ";"
+        });
+
+        this._$window[0].innerHTML += codeLine,
+        this._codeLine += length,
+
+        this._$window.scrollTop(this._$window.prop("scrollHeight"));
+        Animations.pop(`+${this.output}`, this._$output, "white");
 
         this._onCode(this.output);
     }
 
     increaseOutput(amount) {
         this.output += amount;
+
+        this._$output.text(`+${this.output}`);
     }
 }

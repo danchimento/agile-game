@@ -2,6 +2,7 @@ import './style/index.scss';
 import ElementManager from './ui/ElementManager';
 import CodeWindow from './game/CodeWindow';
 import StoreWindow from './game/StoreWindow';
+import TeamWindow from './game/TeamWindow';
 import ProjectTracker from './game/ProjectTracker';
 import $ from 'jquery';
 import Wallet from './game/Wallet';
@@ -18,37 +19,37 @@ var project = null;
 
 var codeWindow;
 var storeWindow;
+var teamWindow;
 var musicPlayer;
 
 $apps = $("#apps");
 
-musicPlayer = new MusicPlayer();
+// musicPlayer = new MusicPlayer();
 
-var urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has('code')) {
+// var urlParams = new URLSearchParams(window.location.search);
+// if (urlParams.has('code')) {
     
-    $.ajax({
-        url: 'https://accounts.spotify.com/api/token',
-        type: 'post',
-        data: {
-            grant_type: 'authorization_code',
-            code: urlParams.get('code'),
-            redirect_uri: 'http://localhost:8080'
-        },
-        headers: {
-            Authorization: 'Basic [BASE64 ENCODE CLIENT_ID:CLIENT_SECRET]', 
-        },
-        dataType: 'json',
-        success: function (data) {
-            console.log(data)
-            musicPlayer.init(data.access_token);
-        }
-    });
-}
+//     $.ajax({
+//         url: 'https://accounts.spotify.com/api/token',
+//         type: 'post',
+//         data: {
+//             grant_type: 'authorization_code',
+//             code: urlParams.get('code'),
+//             redirect_uri: 'http://localhost:8080'
+//         },
+//         headers: {
+//             Authorization: 'Basic [BASE64 ENCODE CLIENT_ID:CLIENT_SECRET]', 
+//         },
+//         dataType: 'json',
+//         success: function (data) {
+//             console.log(data)
+//             musicPlayer.init(data.access_token);
+//         }
+//     });
+// }
 
 // Loading timer
 setTimeout(() => {
-    em = new ElementManager("#game");
     wa = new Wallet(em, 250);
 
     // Set up project tracker
@@ -60,10 +61,13 @@ setTimeout(() => {
     loadNextProject();
 
     // Init code window
-    codeWindow = new CodeWindow(em, output => {
+    codeWindow = new CodeWindow(output => {
         pt.progressTask(output);
     });
     storeWindow = new StoreWindow(onPurchaseItem);
+    teamWindow = new TeamWindow(output => {
+        pt.progressTask(output);
+    });
 
     switchToWindow(codeWindow);
 
@@ -76,6 +80,9 @@ $apps.on("click", "div", function() {
             break;
         case "Store":
             switchToWindow(storeWindow);
+            break;
+        case "Team":
+            switchToWindow(teamWindow);
             break;
     }
 });

@@ -19,6 +19,7 @@
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^4.3.0",
     "json-loader": "^0.5.7",
+    "raw-loader": "^4.0.2",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
@@ -30,6 +31,7 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.5.1",
+    "lorem-ipsum": "^2.0.3",
     "velocity-animate": "1.5.2"
   }
 }
