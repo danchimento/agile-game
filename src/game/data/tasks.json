@@ -53,6 +53,7 @@
         "media framework",
         "native libraries",
         "core libraries",
-        "hardware abstraction layer"
+        "hardware abstraction layer",
+        "directory services"
     ]
 }
