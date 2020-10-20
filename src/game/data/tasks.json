@@ -16,7 +16,12 @@
         "implement interface for",
         "remove context fields in",
         "normalize parent/child relationships on",
-        "update README for"
+        "update README for",
+        "randomize test data for",
+        "generate test data for",
+        "produce UML diagram for",
+        "design messaging topology for",
+        "abstract business logic in"
     ],
     "nouns": [
         "component factory",
@@ -31,6 +36,23 @@
         "documentation generator",
         "common language runtime",
         "operating system",
-        "ai base class"
+        "ai base class",
+        "regression test suite",
+        "execution intent",
+        "logo",
+        "reverse proxy",
+        "service registry",
+        "container registry",
+        "service mesh",
+        "api gateway",
+        "driver manager",
+        "notification layer",
+        "firewall",
+        "application container",
+        "content provider",
+        "media framework",
+        "native libraries",
+        "core libraries",
+        "hardware abstraction layer"
     ]
 }
