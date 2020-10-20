@@ -1,11 +1,13 @@
 [
     {
         "name": "Xinyu Z.",
+        "avatar": "xinyu.jpg",
         "percentageCut": 10,
-        "outputPerSecond": 1 
+        "outputPerSecond": 1
     },
     {
         "name": "Shawn M.",
+        "avatar": "shawn.jpg",
         "percentageCut": 8,
         "outputPerSecond": 5 
     }

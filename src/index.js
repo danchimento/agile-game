@@ -54,7 +54,10 @@ setTimeout(() => {
 
     // Set up project tracker
     pt = new ProjectTracker("#project-tracker", (project) => {
-        wa.increaseRevenue(project.revenue);
+
+        var revenueAfterPayingTeam = teamWindow.processRevenue(project.revenue);
+
+        wa.increaseRevenue(revenueAfterPayingTeam);
         loadNextProject();   
     });
 

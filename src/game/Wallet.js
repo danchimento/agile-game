@@ -18,7 +18,7 @@ export default class Wallet {
 
     increaseRevenue(amount) {
         this.revenue += amount;
-        Animations.pop(`-${amount}`, this._$revenue, "darkgreen",  "SMALL");
+        Animations.pop(`+${amount}`, this._$revenue, "darkgreen",  "SMALL");
         this._displayRevenue();
     }
 

@@ -182,6 +182,15 @@ body {
          border-bottom: thin black solid;
          padding: 10px;
          color: black;
+         display: flex;
+         align-items: center;
+
+         .avatar {
+            height: 3em;
+            border-radius: 50%;
+            border: thin $secondary-color solid;
+            margin-right: 10px;
+         }
 
          .output {
             font-size: smaller;
@@ -200,14 +209,40 @@ body {
       }
    }
 
-   #chat-window {
+   #member-details {
       width: 70%;
-      padding: 10px;
+      padding: 20px;
       background: $background-color;
-      color: white;
       display: flex;
       flex-direction: column;
       overflow-y: scroll;
+      color: black;
+
+      .header {
+         display: flex;
+         align-items: center;
+
+         img {
+            margin-right: 20px;
+         }
+      }
+
+      #member-resume {
+         display: flex;
+         flex-direction: column;
+         margin-top: 20px;
+         line-height: 3em;
+
+         button {
+            background: darkgreen;
+            color: white;
+            font-family: inherit;
+            padding: 10px;
+            border: thin $secondary-color solid;
+            max-width: 150px;
+            cursor: pointer;
+         }
+      }
 
       .message {
          background: $secondary-color;
