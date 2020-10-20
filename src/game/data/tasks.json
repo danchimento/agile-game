@@ -1,0 +1,36 @@
+{
+    "verbs": [
+        "rotate keys for",
+        "refactor",
+        "migrate schema for",
+        "generate data for",
+        "modify graph in",
+        "separate concerns for",
+        "reduce deapth of",
+        "fix formatting bug in",
+        "fix rounding error in",
+        "clean up tech debt in",
+        "optimize the search algorithm",
+        "refactor base classes in",
+        "obfuscate code for",
+        "implement interface for",
+        "remove context fields in",
+        "normalize parent/child relationships on",
+        "update README for"
+    ],
+    "nouns": [
+        "component factory",
+        "unit test suite",
+        "welcome email",
+        "login screen",
+        "message broker",
+        "activity manager",
+        "logging package",
+        "extension manager",
+        "chat window",
+        "documentation generator",
+        "common language runtime",
+        "operating system",
+        "ai base class"
+    ]
+}

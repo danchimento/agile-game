@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import projects from './projects.json';
-import tasks from './tasks.json';
+import projects from './data/projects.json';
+import tasks from './data/tasks.json';
 import { rand } from '../Util';
 
 export default class ProjectTracker {
@@ -85,9 +85,13 @@ export default class ProjectTracker {
         };
 
         for (var i = 0; i < this._project.numTasks; i++) {
-            var randTaskIndex = rand(0, tasks.length - 1);
-            var task = tasks[randTaskIndex];
-            this._project.tasks.push(task);
+            var randVerbIndex = rand(0, tasks.verbs.length - 1);
+            var randNounIndex = rand(0, tasks.nouns.length - 1);
+
+            var verb = tasks.verbs[randVerbIndex];
+            var noun = tasks2.nouns[randNounIndex]
+
+            this._project.tasks.push(`${verb} the ${noun}`);
         }
 
         return this._project;
