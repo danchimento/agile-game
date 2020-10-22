@@ -43,7 +43,9 @@ export default class ProjectTracker {
         this._$projectNumber.text(this._projectNum);
         this._taskNum = 0;
         
-        this._startNextTask()
+        this._startNextTask();
+
+        return this._project;
     }
 
     progressTask(amount) {

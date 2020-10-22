@@ -59,9 +59,7 @@ setTimeout(() => {
 
     // Set up project tracker
     pt = new ProjectTracker("#project-tracker", (project) => {
-
         var revenueAfterPayingTeam = teamWindow.processRevenue(project.revenue);
-
         wa.increaseRevenue(revenueAfterPayingTeam);
         loadNextProject();   
     });
@@ -79,7 +77,7 @@ setTimeout(() => {
 
     emailWindow = new EmailWindow();
 
-    setInterval(() => emailWindow.showNextEmail(), 4000);
+    emailWindow.showNextEmail();
 
     switchToWindow(codeWindow);
 
@@ -126,6 +124,11 @@ function switchToWindow(window) {
 
 function loadNextProject() {
     project = pt.loadNextProject();
+
+    // TODO: Add actual project ids? 
+    if (project.title == "Integrate Facebook in Login") {
+        emailWindow.showNextEmail()
+    }
 }
 
 function onPurchaseItem(item) {

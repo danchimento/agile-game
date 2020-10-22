@@ -22,6 +22,11 @@ export default class EmailWindow {
 
     open() {
         this._$window.show();
+        this._updateUi();
+
+        for (var email of this._receivedEmails) {
+            email.read = true;
+        }
     }
 
     close() {

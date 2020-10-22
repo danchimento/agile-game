@@ -2,11 +2,11 @@
     {
         "from": "boss man (bossman@devjob.orgs)",
         "subject": "new project",
-        "body": "<p>Hey bud</p> <p>Can you help me with <i>this?</i></p>"
+        "body": "<p>Hey!</p> <p>Great news! I just got off the phone with a <i>HUGE</i> potential client. Can't tell you who but let's just say it rhymes with 'CRAMAZON'. Go ahead and finish up whatver project you're working on and I should have more info by then.</p><p>Bossman</p>"
     },
     {
         "from": "boss man (bossman@devjob.orgs)",
-        "subject": "new project",
-        "body": "<p>Yo</p> <p>One more question</p>"
+        "subject": "NEW CLIENT",
+        "body": "<p>Yo!</p> <p>We did it!! We scored SLAMAZON! You might want to go ahead and hire another dev or two to help pick up the slack because the projects are going to start coming in like crazy!<p>Bossman</p></p>"
     }
 ]
