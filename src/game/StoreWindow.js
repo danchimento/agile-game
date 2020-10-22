@@ -6,15 +6,22 @@ export default class StoreWindow {
     _$window;
     _purchasedItems = [];
     _onPurchase;
+    _availableFunds;
 
-    constructor(onPurchase) {
+    constructor(onPurchase, availabelFunds) {
         this._$window = $("#store-window");
         this._onPurchase = onPurchase;
+        this._availableFunds = availabelFunds;
 
         this._loadStore();
     }
 
     get name() { return "Store" }
+
+    onRevenueChange(availabelFunds) {
+        this._availableFunds = availabelFunds;
+        this._loadStore();
+    }
 
     open() {
         this._$window.show();
@@ -22,6 +29,10 @@ export default class StoreWindow {
 
     close() {
         this._$window.hide();
+    }
+
+    _setBuyButtonClick($button, item) {
+        $button.on("click", () => this._buyButtonClick(item))
     }
 
     _loadStore() {
@@ -41,14 +52,19 @@ export default class StoreWindow {
 
                 var $buyButton = $("<div>")
                     .addClass("buy-button")
-                    .on("click", () => this._buyButtonClick(item))
                     .appendTo($item);
+
+                this._setBuyButtonClick($buyButton, item);
 
                 if (this._purchasedItems.indexOf(item.name) > -1) {
                     $buyButton.text("PURCHASED");
                     $item.addClass("purchased");
                 } else {
                     $buyButton.text(`BUY FOR $${item.price}`);
+
+                    if (this._availableFunds < item.price) {
+                        $buyButton.addClass('disabled')
+                    }
                 }
             }
         }

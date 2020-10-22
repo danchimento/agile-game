@@ -89,7 +89,7 @@ export default class ProjectTracker {
             var randNounIndex = rand(0, tasks.nouns.length - 1);
 
             var verb = tasks.verbs[randVerbIndex];
-            var noun = tasks2.nouns[randNounIndex]
+            var noun = tasks.nouns[randNounIndex]
 
             this._project.tasks.push(`${verb} the ${noun}`);
         }

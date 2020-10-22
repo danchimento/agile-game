@@ -3,9 +3,19 @@
         "name": "Keyboards",
         "items": [
             {
+                "name": "DOLL Basic Querty",
+                "price": 100,
+                "outputIncrease": 1 
+            },
+            {
                 "name": "K18 Mechanical",
                 "price": 200,
-                "outputIncrease": 1 
+                "outputIncrease": 10 
+            },
+            {
+                "name": "Diamond 9800",
+                "price": 400,
+                "outputIncrease": 1000 
             }
         ]
     }

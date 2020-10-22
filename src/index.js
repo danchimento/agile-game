@@ -7,6 +7,7 @@ import ProjectTracker from './game/ProjectTracker';
 import $ from 'jquery';
 import Wallet from './game/Wallet';
 import MusicPlayer from './game/spotify';
+import EmailWindow from './game/EmailWindow';
 
 var em = null;
 var pt = null;
@@ -21,6 +22,7 @@ var codeWindow;
 var storeWindow;
 var teamWindow;
 var musicPlayer;
+var emailWindow;
 
 $apps = $("#apps");
 
@@ -50,7 +52,10 @@ $apps = $("#apps");
 
 // Loading timer
 setTimeout(() => {
-    wa = new Wallet(em, 250);
+    var availableFunds = 250;
+    wa = new Wallet(em, availableFunds, (revenue) => {
+        storeWindow.onRevenueChange(revenue);
+    });
 
     // Set up project tracker
     pt = new ProjectTracker("#project-tracker", (project) => {
@@ -67,10 +72,14 @@ setTimeout(() => {
     codeWindow = new CodeWindow(output => {
         pt.progressTask(output);
     });
-    storeWindow = new StoreWindow(onPurchaseItem);
+    storeWindow = new StoreWindow(onPurchaseItem, availableFunds);
     teamWindow = new TeamWindow(output => {
         pt.progressTask(output);
     });
+
+    emailWindow = new EmailWindow();
+
+    setInterval(() => emailWindow.showNextEmail(), 4000);
 
     switchToWindow(codeWindow);
 
@@ -86,6 +95,9 @@ $apps.on("click", "div", function() {
             break;
         case "Team":
             switchToWindow(teamWindow);
+            break;
+        case "Email":
+            switchToWindow(emailWindow);
             break;
     }
 });

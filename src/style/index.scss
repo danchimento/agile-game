@@ -107,6 +107,10 @@ body {
    }
 }
 
+.window {
+   display: none;
+}
+
 #wallet {
    position: absolute;
    right: 15px;
@@ -129,7 +133,6 @@ body {
 }
 
 #store-window {
-   display: none;
 
    .category {
 
@@ -153,6 +156,12 @@ body {
             &:hover {
                cursor: pointer;
                background: darken($background-color, 10%);
+            }
+
+            &.disabled {
+               cursor: not-allowed;
+               opacity: .3;
+               pointer-events: none;
             }
          }
 
@@ -255,5 +264,26 @@ body {
             background-color: lighten($secondary-color, 10%);
          }
       }
+   }
+}
+
+#email-window {
+
+   h3 {
+      color: $secondary-color;
+   }
+
+   .email {
+      padding: 10px;
+      border: thin solid white;
+      margin: 10px 0;
+
+      .from, .subject {
+         color: $secondary-color;
+      }
+   }
+
+   #unread-emails {
+      margin-bottom: 30px;
    }
 }
